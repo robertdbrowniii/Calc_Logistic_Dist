@@ -6,7 +6,7 @@ Calc_Logistic_Dist <-
            p90 = 40,
            ub = Inf,
            trials = 1000) {
-    # Generate a sample of simulated percentiles of size trials
+    # Generate a sample of simulated percentiles of size trials from teh uniform distribution.
     U <-  runif(trials, 0, 1)
     
     # Determine the 40th percentile semi-distances below and above the p50.
