@@ -20,23 +20,22 @@ Determining the value of g is a simple matter if b is known along with a tuple (
     
     g = -ln(1/0.9 - 1) / (p90 - p50) = ln(9) / (p90 - p50)
 
-In the case that the SME assesses p10-p50-p90 values such that the distance from the p10 to the p50 is not equal to the distance from he p50 to the p90 (i.e., some hybrid sigmoid that is not symmetric around the p50), the prior solution for g will not work. This is because the shape factor for the lower half of the sigmoid will not be the same for the upper half.
+In the case that the SME assesses p10-p50-p90 values such that the distance from the p10 to the p50 is not equal to the distance from the p50 to the p90 (i.e., some hybrid sigmoid that is not symmetric around the p50), the prior solution for g will not work. This is because the shape factor for the lower half of the sigmoid will not be the same for the upper half.
 
 A first approximate solution might be to find distinct shape factors for each half of the hybrid sigmoid.
 
     g1 = -ln(1/0.1 - 1) / (p10 - p50) = -ln(9) / (p10 - p50), and
-    
     g2 = -ln(1/0.9 - 1) / (p90 - p50) = ln(9) / (p90 - p50)
 
 Then provide the piecewise function for the sigmoid as
 
-    Y = 1/(1 + exp(-g * (X - p50))), where {
-    g = g1 for X ≤ p50;
+    Y = 1/(1 + exp(-g * (X - p50))), where
+    {g = g1 for X ≤ p50;
     g = g2 for X > p50}
 
 Unfortunately, this approach creates a discontinuity at the p50 that becomes even more pronounced the as the disparity between the semi-distances of p50 - p10 and p90 - p50 increases.
 
-The solution provided here incorporates a linear scaling between the shape factors such that the sigmoid remains continuous through all points regardless of the disparity between the semi-distances. However, the scaling cannot occur from the p10 to the p90. Care is taken to apply the scaling only between the p50 and the percentile parameter associated with the shortest semi-distance. The following conditional applies.
+The solution provided here incorporates a linear scaling between the shape factors such that the sigmoid remains continuous through all points regardless of the disparity between the semi-distances. However, the scaling cannot occur from the p10 to the p90. Care is taken to apply the scaling only between the p50 and the percentile parameter associated with the shortest semi-distance, that is, the section of the sigmoid with the higest slope. The following conditional applies.
 
     if |p10 - p50| > |p90 - p50| then
     min(g2, max(g1, g1 + 2.5 * (Y - 0.5) * |g1 - g2|))
