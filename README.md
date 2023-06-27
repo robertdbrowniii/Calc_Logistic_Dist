@@ -16,14 +16,14 @@ To begin, the logistic function is a symmetric sigmoid function takes the form
 
 Determining the value of g is a simple matter if b is known along with a tuple (X, Y). In this simple case, either the p10 or p90 will suffice to specifiy the g for a symmetric sigmoid.
 
-    g = -ln(1/0.1 - 1) / (p10 - p50) = -ln(9) / (p10 - p50), or
+    g = -ln(1/0.1 - 1) / (p10 - p50) = ln(9) / (p50 - p10), or
     g = -ln(1/0.9 - 1) / (p90 - p50) = ln(9) / (p90 - p50)
 
 In the case that the SME assesses p10-p50-p90 values such that the distance from the p10 to the p50 is not equal to the distance from the p50 to the p90 (i.e., some hybrid sigmoid that is not symmetric around the p50), the prior solution for g will not work. This is because the shape factor for the lower half of the sigmoid will not be the same for the upper half.
 
 A first approximate solution might be to find distinct shape factors for each half of the hybrid sigmoid.
 
-    g1 = -ln(1/0.1 - 1) / (p10 - p50) = -ln(9) / (p10 - p50), and
+    g1 = -ln(1/0.1 - 1) / (p10 - p50) = ln(9) / (p50 - p10), and
     g2 = -ln(1/0.9 - 1) / (p90 - p50) = ln(9) / (p90 - p50)
 
 Then provide the piecewise function for the sigmoid as
