@@ -7,7 +7,7 @@ This <b>Calc_Logistic_Dist()</b> function provides a means to fit a continuous m
 
 To begin, the logistic function is a symmetric sigmoid function takes the form
 
-  Y = 1/(1 + exp(-g * (X - b))), where
+    Y = 1/(1 + exp(-g * (X - b))), where
 
 * X has support in the domain of real numbers;
 * Y takes on values in the interval (0, 1);
@@ -38,16 +38,12 @@ Unfortunately, this approach creates a discontinuity at the p50 that becomes eve
 
 The solution provided here incorporates a linear scaling between the shape factors such that the sigmoid remains continuous through all points regardless of the disparity between the semi-distances. However, the scaling cannot occur from the p10 to the p90. Care is taken to apply the scaling only between the p50 and the percentile parameter associated with the shortest semi-distance. The following conditional applies.
 
-  If |p10 - p50| > |p90 - p50| then
-  
+    if |p10 - p50| > |p90 - p50| then
     min(g2, max(g1, g1 + 2.5 * (Y - 0.5) * |g1 - g2|))
-    
-  else  if |p10 - p50| < |p90 - p50| then
-  
+    else  if |p10 - p50| < |p90 - p50| then
     min(g1, max(g2, g2 - 2.5 * (Y - 0.5) * |g1 - g2|))
-    
-  else g1 (or g2).
+    else g1 (or g2).
 
 Finally, to run a simulaton with this approach, the logistic function is inverted to solve for X using samples drawn uniformly from the interval Y = (0, 1).
 
-    X := -ln(1 / Y - 1) / g[Y] + p50
+    X = -ln(1 / Y - 1) / g[Y] + p50
