@@ -1,4 +1,4 @@
-# Calc_Logistic_Dist
+# Calc_Logistic_Dist(lb, p10, p50, p90, ub)
 Generate a continuous distribution using p10, p50, p90 SME assessments composed of two piecewise logistic functions.
 
 Analysts often need to generate a simulation of a continuous distribution across its entire domain in which the distribution is not specified by a known canonical distribution (e.g., a Gaussian distribution) but rather one that conforms to the uncertainty expressed by a subject matter expert (SME). In this case, the parameters for the distribution cannot be readily derived from a statistically informative empircal data set. Rather, the SME assesses three parameters of an eightieth percentile prediction interval (the p10, p50, and p90) of a cumulative probability function.
@@ -50,6 +50,7 @@ The solution provided here incorporates a linear scaling between the shape facto
         min(g1, max(g2, g2 - 2.5 * (Y - 0.5) * |g1 - g2|))
     else g1 (or g2).
 
-To run a simulaton with this approach, the logistic function is inverted to solve for X using samples drawn uniformly from the interval Y = (0, 1).
+To run a simulaton with this approach, the logistic function is inverted to solve for X using samples drawn uniformly from the interval Y = (0, 1). For situations in which either tail exceeds some boundary condition, the function can be truncated at lower and upper bounds. 
 
     X = -ln(1 / Y - 1) / g(Y) + p50
+
