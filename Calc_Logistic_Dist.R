@@ -16,7 +16,7 @@ Calc_Logistic_Dist <-
     # find growth factors for each semi-distance on either side of the p50 in the
     # case of an asymmetric assessment. If the semi-distances are equal, the g1050
     # will work for the whole function.
-    g1050 <- -log(9) / semidist1050
+    g1050 <- log(9) / semidist1050
     g5090 <- log(9) / semidist5090
     
     # Generate the growth function over the range of U. The growth function will
