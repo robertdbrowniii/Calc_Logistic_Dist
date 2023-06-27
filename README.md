@@ -52,5 +52,5 @@ The solution provided here incorporates a linear scaling between the shape facto
 
 To run a simulaton with this approach, the logistic function is inverted to solve for X using samples drawn uniformly from the interval Y = (0, 1). For situations in which either tail exceeds some boundary condition, the function can be truncated at lower and upper bounds. 
 
-    X = -ln(1 / Y - 1) / g(Y) + p50
+    X = min(ub, max(lb, -ln(1 / Y - 1) / g(Y) + p50))
 
