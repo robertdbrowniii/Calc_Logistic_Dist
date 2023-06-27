@@ -7,7 +7,9 @@ This <b>Calc_Logistic_Dist()</b> function provides a means to fit a continuous m
 
 To begin, the logistic function is a symmetric sigmoid function takes the form
 
-    Y = 1/(1 + exp(-g * (X - b))), where
+    Y = 1/(1 + exp(-g * (X - b))),
+    
+where
 
 * X has support in the domain of real numbers;
 * Y takes on values in the interval (0, 1);
