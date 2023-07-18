@@ -40,7 +40,7 @@ Then provide the piecewise function for the sigmoid as
         {g = g1 for X ≤ p50;
         g = g2 for X > p50}
 
-Unfortunately, this approach creates a discontinuity at the p50 that becomes even more pronounced the as the disparity between the semi-distances of p50 - p10 and p90 - p50 increases.
+Unfortunately, this approach creates a discontinuity at the p50 that becomes even more pronounced as the disparity between the semi-distances of p50 - p10 and p90 - p50 increases.
 
 The solution provided here incorporates a linear scaling between the shape factors such that the sigmoid remains continuous through all points regardless of the disparity between the semi-distances. However, the scaling cannot occur from the p10 to the p90. Care is taken to apply the scaling only between the p50 and the percentile parameter associated with the shortest semi-distance, that is, the section of the sigmoid with the higest slope. The following conditional applies.
 
