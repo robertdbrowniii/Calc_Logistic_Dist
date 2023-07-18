@@ -50,7 +50,7 @@ The solution provided here incorporates a linear scaling between the shape facto
         min(g1, max(g2, g2 - 2.5 * (Y - 0.5) * |g1 - g2|))
     else g1 (or g2).
 
-To run a simulaton with this approach, the logistic function is inverted to solve for X using samples drawn uniformly from the interval Y = (0, 1). For situations in which either tail exceeds some boundary condition, the function can be truncated at lower and upper bounds. 
+To run a simulation with this approach, the logistic function is inverted to solve for X using samples drawn uniformly from the interval Y = (0, 1). For situations in which either tail exceeds some boundary condition, the function can be truncated at lower and upper bounds. 
 
     X = min(ub, max(lb, -ln(1 / Y - 1) / g(Y) + p50))
 
