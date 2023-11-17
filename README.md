@@ -5,7 +5,7 @@ Analysts often need to generate a simulation of a continuous distribution across
 
 This <b>Calc_Logistic_Dist()</b> function provides a means to fit a continuous mapping function through the SME parameters based on two piecewise logistic functions. The following explains how this is achieved.
 
-To begin, the logistic function is a symmetric sigmoid function takes the form
+To begin, the logistic function is a symmetric sigmoid function that takes the form
 
     Y = 1/(1 + exp(-g * (X - b))),
     
